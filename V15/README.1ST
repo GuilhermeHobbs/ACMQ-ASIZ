@@ -1,0 +1,8 @@
+Installation:
+
+To install, simply copy all the files to the same directory, an run the
+programs from there.
+Set the DOS variable TPBGI to the path were the .BGI and .CHR files are.
+Ex: type at the DOS prompt, or put in the AUTOEXEC.BAT file a line as:
+set tpbgi=c:\asiz
+If this is not done, the program ASIZ will not find the graphics drivers.
