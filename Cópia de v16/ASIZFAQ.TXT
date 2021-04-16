@@ -1,0 +1,145 @@
+ASIZ and SI circuits FAQ. Last update: 23/2/2004
+
+Q: What do I put in the input file?
+
+A: The best is to edit the circuit with the EdFil editor.
+  For SI circuits, include all the transistors and switches,
+  omitting all the bias sources (that is, set them to
+  zero). Use a unitary current source as input, and take
+  the output over a unitary load resistor. For SC circuits,
+  draw them normally using operational amplifiers, capacitors,
+  and switches, with a voltage source as input. The op.
+  amps. can be ideal or can have a finite voltage gain.
+  Use normalized values for the transistor transconductances
+  and for capacitances in SC circuits, as only the ratios among
+  them are important.
+  The EdFil editor will generate two files, one with suffix
+  ".cir" containing the drawing, and one with suffix ".net"
+  that is the netlist, the input for the ASIZ program.
+
+Q: Can the program analyze switched-capacitor filters?
+A: Yes. Draw the circuit in the EdFil editor, using ideal
+  operational amplifiers, capacitors, and switches. Use
+  an ideal voltage source as input. Normalize the values
+  of all the capacitors, as only their ratios are important.
+  It is also possible to use finite-gain amplifiers in
+  the circuit. The "A" element is an op. amp. with finite
+  gain. Frequency-independent gain, not GB.
+
+Q: Why the program complains of "system determinant too small"?
+
+A: The circuit is unsolvable by one of these reasons, usually:
+  There is no ground connection.
+  Part of the circuit is floating at some phase.
+  The element values are not normalized and very small.
+It can also happen that part of the circuit is connected
+to ground through a "too complex" capacitive network. See
+the papers describing the program for details about this
+highly unusual condition.
+
+Q: Why the program complains of "forbidden circuit"?
+
+A: Some circuits are forbidden, as switches short-circuiting
+voltage sources, closed switch loops, or switches short-
+circuiting inputs or outputs of operational amplifiers.
+
+Q: How to analyze clock feedthrough effects with ASIZ?
+
+A: Do the following:
+- Remove the input current source(s).
+- Add capacitances to the switches. Each phase "n" switch
+  receives one capacitance at each side, both connected
+  to a "phase n" voltage source. The values of these
+  capacitances must have values proportional to the actual
+  switch capacitances, considering the values set in the
+  "mos transistor parameters" window. If the default values
+  are used, all the transistors have a 1F normalized Cgs
+  capacitance. It is better to set the use of Cgs capaci-
+  tances proportional to the transconductance values, and
+  set the switch capacitances accordingly. Use normalized
+  values.
+- The phase voltage sources should have the correct control
+  signal waveforms for an accurate analysis. A sinusoidal
+  signal can be used as approximation, with a normal
+  voltage source being used for phase 1, and an inverted
+  source for phase 2. The frequency of these sources (set
+  in the "transient analysis parameters" window) must be
+  set to the switching frequency, and the phase shall be
+  set to a few degrees to account for the delay between the
+  application of the control signal and the actual closing
+  of the switches.
+  Note that as ASIZ does not allow the setting of different
+  phases for input sources, this analysis is possible only
+  for two-phases circuits (but it is possible to simulate
+  different input waveforms by adding switches).
+- Add enough segments per phase for good precision, and
+  plot the transient response. Set the sampling mode to
+  "none" ("analysis parameters" window) for correct results.
+This analysis considers only linear effects, and is qualita-
+tive, serving only as a mean to compare structures, and
+detect problems as clock feedthrough integration. More precise
+results can be obtained (with version 1.6 and above) by
+preparing an input signal file with a simulated clock
+waveform.
+
+Q: What results are expected about clock feedthrough integra-
+tion in SI integrators?
+
+A: Both 1st generation and 2nd generation SI integrators will
+integrate clock feedthrough if there is any assymmetry in
+the capacitances at the memory transistors' gates.
+Note that this always occur in usual SI filters, unless
+capacitance is added to the unused sides of these integrators
+to compensate for the loading of the Cgs capacitances of the
+transistors used to make copies of the output signal.
+"Component simulation" structures are naturally balanced,
+and so do not integrate clock feedthrough, in the form with
+modulated signals. In the form with normal signals, they inte-
+grate. 
+
+Q: In a multiphase circuit with four phases, the output is being
+sampled only in one of the phases. Why is the frequency response
+showing replicas corresponding to a sampling rate higher than the
+sampling frequency specified?
+
+A: If in some point of the circuit the signal is being processed
+more than once per sampling period, the decimation of the output
+signal is not enough to change the effective sampling rate, that
+in this case can be of two or four times the specified sampling
+frequency. In general, the effective sampling rate of a multiphase
+circuit can reach f times the switching frequency, where f is the
+number of phases.
+
+Q: I have two circuits with identical transient responses for a
+sinusoidal input of frequency f0. Why are the frequency responses
+at f=f0 for the two circuits different? For example, try a voltage
+source connected by a switch to a capacitor and to a resistor.
+The switching is in four phases, and the switch is closed at phases
+1 and 4. For f0 equal to the switching frequency, the output for
+a cosinusoidal signal is identical in the two cases. But the fre-
+quency responses of the two circuits at this frequency are different.
+
+A: Look at the spectrum. There is an aliasing term at the switching
+frequency, that when added to the displayed response results in the
+correct value for both cases. This is a consequence of how the
+effect of continuous couplings are taken into account. When there
+are components generated by aliasing that fall at the input frequency,
+these effects can appear.
+
+Q: How can I print the ASIZ plots?
+
+A: For the PC version, run it under Windows and use the Print Screen
+key to capture the screen image to the clipboard. Before this, use
+the "i" and "c" keys to create images with white background and black
+lines, that print better. Edit the image in a paint program, to clip
+what you want of the image, add text labels, and adjust colors. If you
+want the window borders to appear, use the paint program to change
+the colors of the borders to a light color, as yellow.
+If you will use the Paintbrush program, remember to set the image size
+to 640x480 pixels and to put it in zoom out mode before pasting the
+clipboard image to it.
+For the Sun version, capture the image with the XV program, for example,
+and edit the colors (to white background and black lines) with it.
+In Windows XP, the print screen function doesn't work. Use a DOS screen
+capture program as the freeware ScreenThief to produce a bitmap that
+you can then print or use in documents.

@@ -1,0 +1,63 @@
+The EdFil editor program:
+-------------------------
+
+The EdFil editor can be used to generate the input net-list file
+for  the ASIZ program, and also for other programs,  even  SPICE
+(with some editing). It was written after the conclusion that it
+is  virtually impossible to write a textual netlist for  a  non-
+trivial  circuit without errors. Its use is recommended for  any
+circuit  analysis.  This program is rather  different  from  the
+schematic  capture programs found in other packages, but  it  is
+very easy to use.
+
+The circuit is drawn on the screen using the cursor keys and the
+selected  keyboard  keys  listed at the  bottom  of  the  editor
+screen. A help screen is assessed by the ? key. Names and  para-
+meters  for the elements are given by moving the cursor  to  the
+component and touching the Return key, or by Ctrl-X, that causes
+the program to ask parameters for all the visible elements.  The
+best method is usually to firstly draw all the circuit and later
+give the parameters. There are default names and parameters  for
+all  elements. The parameters are a text, and are reproduced  in
+the net-list as given, unless for formulae, that must be  enclo-
+sed in parenthesis.
+
+Once  drawn the circuit, the net-list is generated with  Ctrl-Q.
+The  program then asks the names of the files where to save  the
+circuit  description (.cir file) and the net-list  (.net  file).
+After this, any program can be executed while the editor remains
+resident  in memory, with execution returning later to the  edi-
+tor.
+
+An important feature of the program is the optional use of  for-
+mulae in the parameters. Any mathematical expression using cons-
+tants and values given in a value list can be used for a numeri-
+cal  parameter.  The expressions are evaluated in  the  net-list
+generation. This allows easy use of component value lists  gene-
+rated by synthesis programs, or even the use of EdFil as a  syn-
+thesis  program,  with components parameters  given  by  project
+formulae.  The  "=" sign can be used in formulas to  create  new
+values in the value list. Use resistors with both nodes grounded
+to create sets of values in this way, and operate the program as
+a simple spreadsheet. Evaluation is from bottom to top, left  to
+right. Note that "=" have high precedence, not low  (some day  I
+will fix this). Use always parenthesis after "=".
+
+The  default screen mode selection can be overridden as  in  the
+ASIZ  program.  The .BGI files must be present  on  the  default
+drive or in the path indicated by the DOS variable TPGBI.
+
+Contacting the author:
+----------------------
+
+Comments  and  doubts about the programs shall be  sent  to  the
+author:
+
+Dr. Antonio Carlos M. de Queiroz
+Programa de Engenharia Eletrica - COPPE
+Universidade Federal do Rio de Janeiro
+CP 68504
+21945-970 Rio de Janeiro, RJ, Brazil
+E-mail: acmq@ufrj.br
+FTP: coe.ufrj.br, directory pub/acmq
+WWW: http://www.coe.ufrj.br/~acmq

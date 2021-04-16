@@ -1,0 +1,282 @@
+On-line help file for the ASIZ program.
+Version 1.3a, 06/10/1995.
+By Antonio Carlos M. de Queiroz - acmq@coe.ufrj.br
+
+To install, put this file in the current directory or in a directory pointed by 
+the environment variable HELPPATH.
+
+:bgeneral
+From this button menu, all the control windows can be opened.
+
+When writting new values for the control windows items, always press return to finish, or the program will not detect that they were changed, and will not recalculate some plots.
+#
+:bmenul
+Opens the local menu for the window.
+#
+:cfrequencia
+Frequency response graph.
+Direct commands:
+  Mouse left button: Select area to zoom in.
+  Mouse center button: Set cursor position.
+  Mouse drag: Move cursor.
+  Horizontal cursor keys: Move cursor.
+  Vertical cursor keys: Move gain scale.
+  "<", ">" keys: Move frequency scale.
+  "a" key: Reduce frequency range.
+  "r" key: Increase frequency range.
+  "g" key: Grid on/off.
+  "f" key: Phase curves on/off.
+  "t" key: Group delay curves on/off. 
+  "+" key: Reduce upper gain limit.
+  "-" key: Increase upper gain limit.
+  "l" key: Linear/logarithmic scale.
+  "s" key: Lists the sensitivities of selected elements.
+  "e" key: Plots the frequency spectrum for input at the cursor frequency.
+  "w" key: Lists the same spectrum.
+  "x" key: Toggles the retention of the screen image.
+  "v" key: Lists the gain (linear) at the cursor frequency.
+See the "parameters" item of the "local" menu in the window.
+The gain is plotted in decibels, the phase in degrees, and the group delay in seconds. 
+The phase limits are always from -180 to +180 degrees.
+The group delay limits are as set in the "parameters" window. It is computed (in this version) by numerical differentiation of the phase curve, so use more resolution for more precision. The delay in the first point of the plot is not computed (set to 0). False "spikes" may appear at 180 or 360 degrees phase transitions. Use more segments in the plot to eliminate them.
+#
+:craizes
+Poles and zeros plot.
+Direct commands:
+  Mouse left button: Select area to zoom in.
+  Mouse center button: Select root.
+  Mouse drag: Select closest root.
+  Cursos keys: Move the plane.
+  "+" key: Zoom in.
+  "-" key: Zoom out.
+  "g" key: Grid on/off.
+Poles and zeros are computed in the z^1/f domain, where f is the number of phases.
+For example, for a two-phases filter, the poles and zeros shown and listed are
+the square roots of the roots in Z.
+This is necessary, because the actual sampling occurs f times per switching period, and some zeros repeat only after f turns in the normal unit circle. Poles appear always replicated f times.
+See the "parameters" item of the "local" menu in the window.
+#
+:ctransiente
+Transient response plot.
+Direct commands:
+  Mouse center button: Set cursos position.
+  Mouse drag: Move cursor.
+  Horizontal arrow keys: Move cursor.
+  Vertical arrow keys: Move voltage scale.
+  "a" key: Reduce time range.
+  "r" key: Increase time range.
+  "+" key: Reduce upper voltage limit.
+  "-" key: Increase upper voltage limit.
+  "g" key: Grid on/off.
+The output waveforms are displayed corresponding to to sampling mode used, as steps or impulses. Partial transfer functions are displayed as pulses that exist only at the selected output phase. The waveforms correspond exactly to the frequency response plot.
+See the "parameters" item of the "local" menu in the window.
+#
+:twmin
+Limit of the frequency response plot.
+The frequency response will be recomputed when the "Plot" button is pressed.
+#
+:tgmin
+Gain limit in the frequency response plot. No recomputation is necessary.
+#
+:ttgmin
+Group delay limit in the frequency response plot. No recomputation is necessary.
+#
+:slog
+Logarithmic or linear frequency scale.
+#
+:tsegmf
+Number of line segments in the curves.
+Increase to improve the resolution.
+#
+:tsegmt
+Number of one phase time intervals in the plot.
+Time always start from zero.
+#
+:tsegi
+Number of plot segments per phase when using no output sampling ("None" option).
+#
+:sinput
+Input signal waveform.
+Valid for ALL the sources in the netlist simultaneously.
+The "impulse" is a pulse lasting for an entire switching period.
+The sinusoidal signal is considered sampled and held once per phase.
+#
+:ttolz
+Tolerance for real or imaginary errors in the value of roots.
+Maximum sum of real and imaginary errors.
+The program reduces it temporarily when convergence is not reached. Verify if the reductions listed are acceptable.
+#
+:ttolp
+Tolerance for polynomial magnitudes.
+Maximum sum of real and imaginary absolute values of a polynomial derivative for a root to be accepted as simple.
+Increase if there are many multiple roots.
+#
+:timag
+Initial approximation for a polynomial root.
+Try to change if the routine fails in finding the first root.
+#
+:tremin
+Inferior limit for the poles and zeros plot.
+#
+:tdelta
+Height of the poles and zeros plot.
+#
+:blist
+Lists the poles and zeros of the current transfer function, recomputing them if necessary. Poles and zeros are computed in Z^(number of phases).
+#
+:bplot
+Plots or updates the poles and zeros display, recomputing the roots if necessary. Poles and zeros are computed in Z^(number of phases).
+#
+:tfases
+Number of phases of the switching period.
+The durations of the phases are assumed equal.
+#
+:tnetlist
+Name of the input file. A ".net" suffix is assumed, but others are accepted.
+The file will be searched in the current directory. Append a path name if it is not there.
+The first line in the netlist file is the number of nodes. The elements follow in the next lines, one per line.
+The input file can be generated by the EdFil program.
+The accepted elements and their description are:
+
+- MOS transistor:
+  M<name> <drain node> <gate node> <source node> <Gm> <Gds>
+- Resistor:
+  R<name> <node 1> <node 2> <resistance>
+- Capacitor:
+  C<name> <node 1> <node 2> <number of unit capacitances>
+- Current source:
+  I<name> <node +> <node -> <current>
+- Voltage source:
+  V<name> <node +> <node -> <voltage>
+- Switch:
+  S<name> <node 1> <node 2> <phase> [<phase>...]
+- Transconductor:
+  G<name> <node I+> <node I-> <node V+> <node V-> <Gm>
+- Ideal operational amplifier:
+  O<name> <input node> <input node> <output node>
+- Voltage amplifiers:
+- E<name> <node Vo+> <node Vo-> <node Vi+> <node Vo-> <Av>
+- A<name> <node Vi-> <node Vi+> <node Vo> <Av>
+#
+:tnsaida
+This is the output node for sensitivity analysis.
+The sensitivity analysis of the circuit depends on where is the output. Other nodal voltages can be observed without recalculation, but sensitivity analysis will be available only for this node.
+#
+:traio
+Interpolation circle radius.
+The program computes transfer functions in ratio-of-polynomials form after analyzing the circuit in the Z domain for complex frequencies located in a circle centered in the complex plane.
+This is the radius of the circle. The default value avoids the unit circle, because poles can be there in many simple circuits, and the circuit cannot be analyzed in a pole frequency.
+Change this value if the circuit has poles over
+the circle with this radius, and the program 
+complains of singular system of equations. 
+For large, high-order circuits, it is a good
+idea to vary this value and compare the results.
+If no appreciable changes are observed, the analysis is correct.
+#
+:tdisp
+Polynomial dispersion factor:
+Polynomials are obtained from the analysis results by FFT interpolation. The resulting polynomials are always of a degree that is one less than a power of two. The dispersion factor is used to determine the correct degree, by ignoring coefficients that have magnitudes smaller than the magnitude of the greater coefficient divided by this factor.
+#
+:tminimo
+This is the minimum value for determinants in systems of equations, and absolute polynomial coefficients.
+#
+:tgrau
+This is the degree of the circuit characteristic polynomial, as determined by the program. Its is only necessary to change it if some transfer function in Z has a numerator with degree higher than the degree of the denominator (noncausal circuit). It may also be increased to test the accuracy of the polynomial interpolation.
+#
+:tfs
+The sampling frequency in Hertz. Affects only the scales of the plots.
+#
+:ssh
+Sampling mode of the output.
+Affects the display of the transient response, and the inclusion or not of a sample/hold function in the frequency response.
+S/H: The input is considered sampled at the start of each phase. As consequence, the outputs are also sampled in this way.
+Impulse: The input is as above, but the outputs are sampled by unit inpulses at the start of each phase. This produces "digital" transfer functions for the partial transfer functions. A global transfer function usually presents zeros due to the multiple sampling of the output signal in a switching period. A "digital" transfer function can be obtained by zeroing the output in phases other than the one that produces the desired output.
+None: No sampling is assumed at input or outputs. The circuits formed through unswitched paths 
+connecting directly the input to the outputs are assumed to be "fast" compared to the input signal. No sensitivity analysis was implemented (yet) for this mode.
+#
+:banalisar
+Starts the analysis of the circuit. A number of frequency-domain analysis is made, and from the results the nodal voltages in the normal and adjoint networks are interpolated as ratios of polynomials in Z.
+#
+:ganalise
+Displays the progress of the circuit analysis and of the polynomial interpolations. The analysis time can be quite long if more than about 200 equations are generated by the circuit.
+#
+:tsaida
+Node where the output voltage is measured. The program computes all the  transfer functions in the first analysis. Sensitivities are available for just one node, but any of the others can be examinated without a new analysis.
+#
+:stiponum
+A filter with n phases has nxn transfer functions, from the n input phases to the n output phases. This setting selects one of these partial transfer functions or the global transfer function, that is simply the sum of all the partial transfer functions.
+#
+:tfk
+This applies only to partial numerators.
+#
+:sadjunto
+The "normal" network transfer functions are normally what is of interest. The transfer functions of the adjoint network are used in sensitivity analysis. They can also be examinated, but may be without physical meaning.
+#
+:blistnum
+Lists the current numerator. In partial numerators the powers of Z are separated by one. If the input phase is different from the output phase, the fractional delay is taken into account. The global numerator is listed in fractional powers of Z. It is simply the sum of all the partial numerators, and is used for the computation of frequency responses and transmission zeros. Usually the desired transfer function numerator of a filter is one of the partial numerators.
+#
+:ssensi
+The first part of the sensitivity analysis, the computation of the adjoint network transfer functions, is always done in the initial analysis. This setting controls if the error curves will be computed an plotted in the frequency response plot.
+#
+:sdesvios
+With the statistical deviation mode, the errors
+correspond to expected error limits in statistical
+sense if the filter is built with components with
+the specified variability. If x% of the components
+are within the tolerance, asuming a Gaussian
+distribution, x% of the filters built will be
+within the error limits.
+With the deterministic deviation mode, the error
+curve is a first-order approximation to the effect
+in the frequency response curves when the selected
+components values are multiplied by the variability
+factor.
+#
+:tvar
+For a component x, this is the expected value of dx/x used in the sensitivity analysis.
+#
+:brsensi
+Reads the current status of the groups for sensitivity analysis from disk.
+#
+:bwsensi
+Writes the current status of the groups for sensitivity analysis to disk.
+#
+:csensi
+Use the mouse and keyboard to select how the
+sensitivity analysis will be done:
+  The left button adds components to the current
+  group.
+  The central button deselects components.
+  The keys a-z set what is the current group.
+  The key * selects no correlation (default).
+In the computation of the statistical deviation,
+components added to the same group are considered
+correlated. Components in the * group are
+considered uncorrelated. The others are
+considered without error.
+Groups have no effect in the deterministic
+deviation computation.
+#
+:scap
+Values assumed for the Cgs and Cgd capacitances of the MOS transistors.
+The default is (1,0), because without Ggd the program results for a normal switched-current circuit independ on the value of Cgs.
+A more realistic analysis can be made by assigning values proportional to Gm, what assumes that Gm is controlled by changing the width of the transistors.
+#
+:tcgs
+The results of the program independ on the time constants of the circuit. This value is usually maintained as 1. In theory, it may be changed to larger values to control the numerical stability of the algorithm when small nonzero values of Cgd are selected in some circuits.
+#
+:tcgd
+This value controls the Cgd/Cgs ratio of the MOS transistors, am important source of errors in switched-current circuits.
+#
+:sgds
+This setting controls how the Gds conductance of the MOS transistors is considered. It can be left as read from the input netlist (usually 0, meaning an ideal circuit), or set as proportional to Gm, what considers that Gm is controlled by changing the width of the MOS transistors.
+#
+:tgds
+This value is the Gds/Gm ratio, an important source of errors in switched-current filters.
+#
+:tsp
+Input frequency for a sinusoidal input, used in the output spectrum calculation.
+The unit (rd/s or Hz) is the same of the frequency response horizontal axis.
+As many components as can fit in the frequency response graph will be computed.
+The keys "e" and "w" cause the plotting or listing of the spectrum for the cursor frequency.
+#
