@@ -1,0 +1,80 @@
+{\rtf1\ansi \deff4\deflang1033{\fonttbl{\f4\froman\fcharset0\fprq2 Times New Roman;}{\f11\fmodern\fcharset0\fprq1 Courier New;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;
+\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;
+\red192\green192\blue192;}{\stylesheet{\widctlpar \f4\fs20 \snext0 Normal;}{\*\cs10 \additive Default Paragraph Font;}}{\info{\author Antonio Carlos M. de Queiroz}{\operator Antonio Carlos M. de Queiroz}{\creatim\yr1998\mo7\dy28\min29}
+{\revtim\yr1998\mo7\dy27\hr21\min49}{\version2}{\edmins2}{\nofpages2}{\nofwords609}{\nofchars3475}{\*\company COPPE/UFRJ}{\vern57431}}\paperw11907\paperh16840\margl1418\margr1418\margt1418\margb1418 \widowctrl\ftnbj\aenddoc\hyphcaps0\formshade \fet0
+\sectd \psz9\linex0\endnhere {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl4
+\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}
+{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}\pard\plain \qj\widctlpar \f4\fs20 {\f11 Examples files for the ASIZ program: 
+\par 
+\par    The files are distributed as the EdFil descriptions (.CIR), the ASIZ input files (.NET) and value lists (.VAL). 
+\par 
+\par }\pard \qj\fi-567\li567\widctlpar {\f11 
+LP5SC4 - 5th order bilinear elliptic SC filter with 4 phases. Output node:21. A circuit used as example in various papers about SC circuit analysis. From: J. A. Nossek and G. C. Temes, "Switched-Capacitor filter design using bilinear element modeling", IE
+EE Trans. Circ. Syst., pp. 481-491, June 1980. 
+\par LP6BSI - 6th order bilinear Chebyschev SI filter in cascade of biquads. From: J. B. Hughes, I. C. Macbeth, and D. M. Pattullo, "Switched current filters", IEE Proceedings, Vol. 137, Pt. G, No. 2, pp. 156-162, April 1990. 
+\par LP5BSI - 5th order bilinear Chebyshev SI filter using bilinear integrators. Value list: CH5.VAL. From: I. Song and G. W. Roberts, "A 5th order bilinear switched-current Chebyshev filter", Proc. 1993 IEEE ISCAS, Chicago, IL, USA, pp. 1097-1100, May 1993. 
+
+\par LP5E1SI - 5th order bilinear low-pass filter using first-generation Euler integrators. From: G. Roberts and A. Sedra, Chapter 9 of the book "Switched-currents, an analogue technique for digital technology", Edited by C. Toumazou, J. B. Hughes and N. C. Ba
+ttersby, IEE, London, 1993. The formulas for the elements were taken from the following example. Value list: CH5.VAL or EL5.VAL. 
+\par LP5E2SI - 5th order bilinear low-pass filter using second-generation Euler integrators. From: A. C. M. de Queiroz 
+and P. R. M. Pinheiro, "Bilinear switched-current ladder filters using Euler integrators". IEEE Transactions on Circuits and Systems-I, Vol. 43, No. 1, January 1996, pp. 66-70. Value list: CH5.VAL or EL5.VAL. 
+\par BP6BSI - 6th order bilinear elliptic band-pass filter using bilinear integrators. The value list is the file BP610.VAL. From: A. C. M. de Queiroz and P. M. Pinheiro, "Switched-current ladder band-pass filters", Proc. 1994 IEEE ISCAS, London, UK, pp. 309-3
+12, May 1994. 
+\par BP6ESI - 6th order bilinear elliptic band-pass filter using Euler integrators. Value list: BP610.VAL. From: A. C. M. de Queiroz and P. M. Pinheiro, "Switched-current ladder band-pass filters", Proc. 1994 IEEE ISCAS, London, UK, pp. 309-312, May 1994. 
+
+\par }\pard \qj\widctlpar {\f11 
+\par    Eight different basic structures for SI low-pass bilinear filters, all of 5th order, and using the value lists CH5.VAL or EL5.VAL, for Chebyshev or Cauer (elliptic) filters: 
+\par 
+\par }\pard \qj\fi-567\li567\widctlpar {\f11 BILIN1S - Bilinear filter using first-generation bilinear integrators. 
+\par BILIN2S - Bilinear filter using second-generation bilinear integrators. 
+\par EULER1S - Bilinear filter using first-generation Euler integrators. 
+\par EULER2S - Bilinear filter using second-generation Euler integrators. 
+\par CSBILIND- Bilinear filter using component-simulation bilinear integrators in direct form. 
+\par CSBILINM- Bilinear filter using component-simulation bilinear integrators in modulated form. 
+\par CSEULERD- Bilinear filter using component-simulation Euler integrators in direct form. 
+\par CSEULERM- Bilinear filter using component-simulation Euler integrators in modulated form.
+\par }\pard \qj\widctlpar {\f11 
+\par    For component-simulation filters, see: J. Schechtman, A. C. M. de Queiroz, and L. P. Caloba, "Switched-current filters by component simulation", Analog Integrated Circuits and Signal Processing, july 1997, pp. 303-309.
+\par 
+\par    Most of the examples include formulas for the element values in the .CIR file. The EdFil program evaluates these formulas to obtain the final element values for the netlist file. To design a different filter, it is enough to change the rate the netlist
+ file. The
+ value lists included are element values for passive LC doubly terminated ladder filters, with appropriate frequency predistortion for a bilinear filter, nor- malized for unitary terminations. The examples of bilinear Chebyshev filters illustrate possible
+ problems in finding multiple transmission zeros. Change the magnitude tolerance in the poles and zeros parameters window to a higher value to compute correctly the multiple zeros at the Nyquist frequency in the bilinear filters. The output node for all t
+he SI filters is 1. In all the examples the correct transfer function is obtained with impulse sampling. 
+\par 
+\par ACMQ - 27/7/1998 
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  
+\par 
+\par  _____________________________________________ 
+\par }}
