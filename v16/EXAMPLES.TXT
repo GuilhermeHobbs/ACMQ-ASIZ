@@ -1,0 +1,112 @@
+Examples files for the ASIZ program:
+
+   The  files are distributed as the EdFil descriptions  (.CIR), 
+the ASIZ input files (.NET) and value lists (.VAL).
+
+LP5SC4 - 5th order bilinear elliptic SC filter with  4  phases. 
+Output  node:21.  A circuit used as example  in  various  papers 
+about  SC circuit analysis. From: J. A. Nossek and G. C.  Temes, 
+"Switched-Capacitor  filter design using bilinear element  mode-
+ling", IEEE Trans. Circ. Syst., pp. 481-491, June 1980.
+
+LP6BSI  - 6th order bilinear Chebyschev SI filter in cascade  of
+biquads. From: J. B. Hughes, I. C. Macbeth, and D. M.  Pattullo, 
+"Switched  current filters", IEE Proceedings, Vol. 137,  Pt.  G, 
+No. 2, pp. 156-162, April 1990.
+
+LP5BSI  - 5th order bilinear Chebyshev SI filter using  bilinear 
+integrators.  Value list: CH5.VAL. From: I. Song and G.  W.  Ro-
+berts, "A 5th order bilinear switched-current Chebyshev filter", 
+Proc.  1993  IEEE ISCAS, Chicago, IL, USA,  pp.  1097-1100,  May 
+1993.
+
+LP5E1SI  - 5th order bilinear low-pass filter using  first-gene-
+ration Euler integrators. From: G. Roberts and A. Sedra, Chapter 
+9  of  the book "Switched-currents, an  analogue  technique  for 
+digital technology", Edited by C. Toumazou, J. B. Hughes and  N. 
+C.  Battersby, IEE, London, 1993. The formulas for the  elements 
+were  taken from the following example. Value list:  CH5.VAL  or 
+EL5.VAL.
+
+LP5E2SI - 5th order bilinear low-pass filter using  second-gene-
+ration Euler integrators. From: A. C. M. de Queiroz and P. R. M. 
+Pinheiro, "Bilinear switched-current ladder filters using  Euler 
+integrators". IEEE Transactions on Circuits and Systems-I,  Vol. 
+43,  No.  1,  January 1996, pp. 66-70. Value  list:  CH5.VAL  or 
+EL5.VAL.
+
+BP6BSI  -  6th order bilinear elliptic  band-pass  filter  using 
+bilinear  integrators.  The value list is  the  file  BP610.VAL. 
+From: A. C. M. de Queiroz and P. M. Pinheiro,  "Switched-current 
+ladder  band-pass filters", Proc. 1994 IEEE ISCAS,  London,  UK, 
+pp. 309-312, May 1994.
+
+BP6ESI  -  6th order bilinear elliptic  band-pass  filter  using 
+Euler  integrators.  Value list: BP610.VAL. From: A.  C.  M.  de 
+Queiroz  and P. M. Pinheiro, "Switched-current ladder  band-pass 
+filters",  Proc. 1994 IEEE ISCAS, London, UK, pp.  309-312,  May 
+1994.
+
+   Eight  different  basic structures for SI  low-pass  bilinear 
+filters, all of 5th order, and using the value lists CH5.VAL  or 
+EL5.VAL, for Chebyshev or Cauer (elliptic) filters:
+
+BILIN1S  -Bilinear filter using first-generation bilinear  inte-
+grators.
+
+BILIN2S -Bilinear filter using second-generation bilinear  inte-
+grators.
+
+EULER1S  -Bilinear filter using first-generation Euler  integra-
+tors.
+
+EULER2S -Bilinear filter using second-generation Euler  integra-
+tors.
+
+CSBILIND-Bilinear  filter  using  component-simulation  bilinear 
+integrators in direct form.
+
+CSBILINM-Bilinear  filter  using  component-simulation  bilinear 
+integrators in modulated form.
+
+CSEULERD-Bilinear filter using component-simulation Euler  inte-
+grators in direct form.
+
+CSEULERM-Bilinear filter using component-simulation Euler  inte-
+grators in modulated form.
+
+   For  component-simulation filters, see: J. Schechtman, A.  C. 
+M.  de Queiroz, and L. P. Caloba, "Switched-current  filters  by 
+component  simulation",  Analog Integrated Circuits  and  Signal 
+Processing, july 1997, pp. 303-309.
+
+CKFT-Example of clock feedthrough analysis,  showing clock feed-
+through cancellation by scaled replication. See:  A. C.  M.  de
+Queiroz and J. Schechtman, "Elimination of nonlinear clock feed-
+through in component-simulation switched-current circuits", 1998
+IEEE ISCAS, Monterey, EUA, may 1998, Vol. I, pp. 325-328.
+
+OSCILL - Two-integrator-loop SC oscillator.  The voltage  source
+supplies an initial condition if set to be a step.  The  program
+doesn't accept interchange between the source and the  capacitor
+in series with it, due to the limitations on the structures that
+it can analyze.
+
+   Most of the examples include formulas for the element  values 
+in the .CIR file. The EdFil program evaluates these formulas  to 
+obtain the final element values for the netlist file. To  design 
+a different filter, it is enough to change the rate the  netlist 
+file. The value lists included are element values for passive LC 
+doubly  terminated  ladder filters, with  appropriate  frequency 
+predistortion  for  a bilinear filter, nor-malized  for  unitary 
+terminations.
+   The examples of bilinear Chebyshev filters illustrate  possi-
+ble problems in finding multiple transmission zeros. Change  the 
+magnitude tolerance in the poles and zeros parameters window  to 
+a  higher value to compute correctly the multiple zeros  at  the 
+Nyquist frequency in these filters.
+   The output node for all the SI filters is 1. In all the exam-
+ples  the  correct transfer function is  obtained  with  impulse 
+sampling.
+
+ACMQ -01/07/2003 
